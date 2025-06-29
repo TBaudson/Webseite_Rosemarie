@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ferienwohnung Rosemarie – Ihr Zuhause in Kamp-Bornhofen am Rhein</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* CSS Variables für einfache Farbanpassungen */
+        :root {
+            --color-primary: #a16258; /* Ein warmer, eleganter Braun-Ton */
+            --color-secondary: #3c4858; /* Dunkles Blau-Grau für Text */
+            --color-light: #fdfaf8; /* Ein warmer Off-White Ton */
+            --color-accent: #c48a7e; /* Akzentfarbe für Hover-Effekte */
+            --font-headings: 'Lora', serif;
+            --font-body: 'Open Sans', sans-serif;
+        }
+
+        /* Basis-Styling */
+        body {
+            font-family: var(--font-body);
+            background-color: var(--color-light);
+            margin: 0;
+            color: var(--color-secondary);
+            line-height: 1.7;
+            font-size: 17px;
+        }
+
+        /* Container für den Inhalt */
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* --- Header & Hero Section --- */
+        .hero {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2)), url('Bilder/549333492.jpg'); /* HIER IHR BESTES BILD EINTRAGEN */
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 6rem 1rem 4rem 1rem;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+        }
+        .hero h1 {
+            font-family: var(--font-headings);
+            font-size: 3.5rem;
+            margin: 0;
+            font-weight: 600;
+        }
+        .hero p {
+            font-size: 1.25rem;
+            margin-top: 0.5rem;
+            font-weight: 300;
+        }
+
+        /* --- Navigation --- */
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid #eee;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 0.8rem 0;
+            transition: box-shadow 0.3s;
+        }
+        .navbar.scrolled {
+            box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+        }
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .nav-links a {
+            color: var(--color-secondary);
+            text-decoration: none;
+            margin: 0 1.2rem;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+            padding: 0.5rem;
+        }
+        .nav-links a:hover {
+            color: var(--color-primary);
+        }
+
+        /* --- Sections Allgemein --- */
+        section {
+            padding: 4rem 0;
+            border-bottom: 1px solid #eee;
+        }
+        section:last-of-type {
+            border-bottom: none;
+        }
+        h2 {
+            font-family: var(--font-headings);
+            font-size: 2.5rem;
+            text-align: center;
+            color: var(--color-primary);
+            margin-bottom: 3rem;
+        }
+
+        /* --- Ausstattung (Facts) --- */
+        .facts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            list-style: none;
+            padding: 0;
+        }
+        .facts li {
+            padding-left: 30px;
+            position: relative;
+        }
+        .facts li::before {
+            content: '✔'; /* Simples Checkmark-Icon */
+            position: absolute;
+            left: 0;
+            color: var(--color-primary);
+            font-weight: bold;
+        }
+
+        /* --- Bewertungen (Testimonials) --- */
+        .testimonials {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        .testimonial-card {
+            background-color: white;
+            border: 1px solid #eee;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+        .testimonial-card blockquote {
+            margin: 0;
+            font-style: italic;
+            color: #555;
+            border-left: 4px solid var(--color-accent);
+            padding-left: 1rem;
+        }
+        .rating-summary {
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: var(--color-secondary);
+        }
+
+        /* --- Bildergalerie --- */
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+        }
+        .image-gallery img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .image-gallery img:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        /* --- Buchungs-Button (Call to Action) --- */
+        .cta-section {
+            background-color: white;
+            text-align: center;
+            border-radius: 12px;
+            padding: 3rem;
+        }
+        .cta-button {
+            display: inline-block;
+            background-color: var(--color-primary);
+            color: white;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-decoration: none;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .cta-button:hover {
+            background-color: var(--color-accent);
+            transform: translateY(-3px);
+        }
+        
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            background-color: var(--color-secondary);
+            color: #ccc;
+            padding: 2rem;
+            font-size: 0.9rem;
+        }
+        footer a {
+            color: white;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* --- Lightbox für die Bildergalerie --- */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.85);
+            justify-content: center;
+            align-items: center;
+        }
+        .lightbox img {
+            max-width: 90%;
+            max-height: 80%;
+            box-shadow: 0 0 30px rgba(0,0,0,0.5);
+        }
+        .lightbox .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 3rem;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .hero p { font-size: 1.1rem; }
+            h2 { font-size: 2rem; }
+            section { padding: 3rem 0; }
+            .nav-links a { margin: 0 0.5rem; font-size: 0.85rem;}
+        }
+
+    </style>
+</head>
+<body>
+
+    <header class="hero">
+        <h1>Ferienwohnung Rosemarie</h1>
+        <p>Ihr gemütliches Zuhause in Kamp-Bornhofen am Rhein</p>
+    </header>
+
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <ul class="nav-links">
+                <li><a href="#beschreibung">Beschreibung</a></li>
+                <li><a href="#ausstattung">Ausstattung</a></li>
+                <li><a href="#galerie">Bilder</a></li>
+                <li><a href="#bewertungen">Bewertungen</a></li>
+                <li><a href="#buchung">Buchung</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container">
+            <section id="beschreibung">
+                <h2>Willkommen am Mittelrhein</h2>
+                <p>
+                    Herzlich willkommen in der <strong>Ferienwohnung Rosemarie</strong>! Unsere Unterkunft ist Ihr idealer Rückzugsort im UNESCO-Welterbe Oberes Mittelrheintal. Sie befindet sich in einer ruhigen Seitenstraße im Hochparterre, nur 300 Meter vom malerischen Rheinufer entfernt. Perfekt für Familien, Paare oder kleine Gruppen, die Erholung suchen und einen idealen Ausgangspunkt für Wanderungen, Radtouren und Schiffsausflüge zu den Burgen und der Loreley wünschen.
+                    Die Bahnstation sowie Einkaufsmöglichkeiten sind in wenigen Minuten zu Fuß erreichbar.
+                </p>
+            </section>
+
+            <section id="ausstattung">
+                <h2>Ausstattung & Highlights</h2>
+                <ul class="facts">
+                    <li>80 m² große, helle Wohnung für Sie allein</li>
+                    <li>Komplett ausgestattete Küche</li>
+                    <li>Gemütliches Wohnzimmer mit TV</li>
+                    <li>Großes Schlafzimmer für erholsame Nächte</li>
+                    <li>Modernes Badezimmer</li>
+                    <li>Kostenloses & schnelles WLAN</li>
+                    <li>Kostenlose Parkplätze direkt am Haus</li>
+                    <li>Garten mit Rosen, Terrasse & Spielplatz</li>
+                    <li>Sehr ruhige Lage trotz zentraler Anbindung</li>
+                    <li>Persönliche Betreuung durch uns, Ihre Gastgeber</li>
+                </ul>
+            </section>
+
+            <section id="galerie">
+                <h2>Ein kleiner Einblick</h2>
+                <div class="image-gallery">
+                    <img src="Bilder/276653367.jpg" alt="Wohnbereich mit Sofa und Blick zum Fenster">
+                    <img src="Bilder/276653386.jpg" alt="Helle Küche mit voller Ausstattung">
+                    <img src="Bilder/276653390.jpg" alt="Essbereich der Küche">
+                    <img src="Bilder/276653393.jpg" alt="Schlafzimmer mit großem Doppelbett">
+                    <img src="Bilder/276653397.jpg" alt="Detailansicht des Wohnzimmers">
+                    <img src="Bilder/276653406.jpg" alt="Sitzecke im Wohnzimmer">
+                    <img src="Bilder/289825373.jpg" alt="Flur und Eingangsbereich der Wohnung">
+                    <img src="Bilder/289909491.jpg" alt="Blick aus dem Fenster">
+                    <img src="Bilder/289909525.jpg" alt="Badezimmer mit Dusche und WC">
+                    <img src="Bilder/289909817.jpg" alt="Garderobe im Flur">
+                    <img src="Bilder/289910084.jpg" alt="Detail der Dekoration">
+                    <img src="Bilder/315486490.jpg" alt="Gartenansicht mit Spielplatz">
+                    <img src="Bilder/315486576.jpg" alt="Badezimmer aus einer anderen Perspektive">
+                    <img src="Bilder/315486678.jpg" alt="Terrasse mit Sitzgelegenheiten">
+                    <img src="Bilder/315486994.jpg" alt="Blick auf den Rhein">
+                    <img src="Bilder/524190007.jpg" alt="Der Garten mit Rosen">
+                    <img src="Bilder/524190703.jpg" alt="Sitzbereich auf der Terrasse">
+                    <img src="Bilder/526039528.jpg" alt="Blick auf die Burg vom Garten aus">
+                    <img src="Bilder/549333492.jpg" alt="Wohnzimmer mit Fernseher">
+                    <img src="Bilder/549333550.jpg" alt="Diele und Eingangstür">
+                    <img src="Bilder/549333782.jpg" alt="Blick in den Garten">
+                    <img src="Bilder/Außen Eingang.jpg" alt="Außenansicht des Hauses mit Eingangsbereich">
+                </div>
+            </section>
+
+            <section id="bewertungen">
+                <h2>Was unsere Gäste sagen</h2>
+                <div class="rating-summary">
+                    Bewertet mit <strong>9,4 / 10 – Hervorragend</strong> auf Booking.com
+                </div>
+                <div class="testimonials">
+                    <div class="testimonial-card">
+                        <blockquote>„Super gute Vermieter, saubere Wohnung, gut organisiert 👍“</blockquote>
+                    </div>
+                    <div class="testimonial-card">
+                        <blockquote>„Wir waren begeistert: Top-Lage, alles fußläufig, Ausstattung lässt keine Wünsche offen.“</blockquote>
+                    </div>
+                    <div class="testimonial-card">
+                        <blockquote>„Die Vermieter waren sehr nett und haben uns tolle Ausflugstipps gegeben. Wir können die Wohnung uneingeschränkt empfehlen.“</blockquote>
+                    </div>
+                </div>
+            </section>
+
+            <section id="buchung">
+                <div class="cta-section">
+                    <h2>Haben wir Ihr Interesse geweckt?</h2>
+                    <p>Prüfen Sie freie Termine und sichern Sie sich Ihren Traumurlaub am Rhein.</p>
+                    <a href="https://www.booking.com/hotel/de/bachstrasse-10.de.html?aid=304142&label=gen173nr-1FCAEoggI46AdIM1gEaDuIAQGYAQe4ARnIAQ_YAQHoAQH4AQyIAgGoAgO4Asz2hcMGwAIB0gIkNjkzMDdhNDItNzQyMy00NzY5LWI5YmUtZjk2ODIyMWVlOTRk2AIG4AIB&sid=762a7aa2b2738ece9c1f78dc0d46b518&dest_id=-1803479&dest_type=city&dist=0&group_adults=2&group_children=0&hapos=3&hpos=3&no_rooms=1&req_adults=2&req_children=0&room1=A%2CA&sb_price_type=total&sr_order=popularity&srepoch=1751219090&srpvid=4368a4dc5e7863247ba03acd05d8c840&type=total&ucfs=1&#hp_facilities_box" target="_blank" class="cta-button">
+                        Verfügbarkeit & Preise auf Booking.com prüfen
+                    </a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            © 2025 Ferienwohnung Rosemarie – Familie [Ihr Name hier eintragen]<br>
+            <a href="impressum.html">Impressum</a> &bull; <a href="datenschutz.html">Datenschutz</a>
+        </div>
+    </footer>
+
+    <div class="lightbox" id="lightbox">
+        <span class="close" id="close">&times;</span>
+        <img src="" alt="Großansicht" id="lightbox-img">
+    </div>
+
+    <script>
+        // Kleines Script für die Navigation und die Lightbox
+        document.addEventListener('DOMContentLoaded', () => {
+            // Sticky Navbar
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+
+            // Lightbox Funktionalität
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const galleryImages = document.querySelectorAll('.image-gallery img');
+            const closeBtn = document.getElementById('close');
+
+            galleryImages.forEach(img => {
+                img.addEventListener('click', () => {
+                    lightbox.style.display = 'flex';
+                    lightboxImg.src = img.src;
+                });
+            });
+
+            closeBtn.addEventListener('click', () => {
+                lightbox.style.display = 'none';
+            });
+            
+            lightbox.addEventListener('click', (e) => {
+                if (e.target === lightbox) {
+                     lightbox.style.display = 'none';
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
