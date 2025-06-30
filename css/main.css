@@ -81,7 +81,17 @@ body {
 .nav-links a:hover {
     color: var(--color-primary);
 }
-
+/* In deiner main.css ergänzen */
+.home-link {
+    display: inline-block;
+    margin-bottom: 1em;
+    color: #336699;
+    text-decoration: none;
+    font-weight: bold;
+}
+.home-link:hover {
+    text-decoration: underline;
+}
 /* --- Sections Allgemein --- */
 section {
     padding: 4rem 0;
